@@ -90,26 +90,52 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="bg-gradient-to-br from-slate-50 to-slate-100 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Профессиональный ремонт газовых котлов и колонок
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Заменим опыт на качество
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90">
-                <Icon name="Phone" size={18} className="mr-2" />
-                Вызвать мастера
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="tel:+79109696588">
-                  <Icon name="Phone" size={18} className="mr-2" />
-                  8 910 969 65 88
-                </a>
-              </Button>
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a5952] via-[#1f6b62] to-[#1a5952]">
+          <div className="absolute inset-0 opacity-20">
+            <img 
+              src="https://cdn.poehali.dev/projects/20529954-e13a-4960-94c8-f34546f869da/files/6aaf0645-ee8a-4eb0-813f-38eca550e0fa.jpg" 
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                  <Icon name="Flame" className="text-white" size={32} />
+                </div>
+                <h1 className="text-3xl font-bold text-white">РЕМОНТ И ОБСЛУЖИВАНИЕ КОТЛОВ</h1>
+              </div>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
+                Профессиональный ремонт газовых котлов
+              </h2>
+              <p className="text-2xl text-white/90 mb-8 font-medium">
+                Заменим опыт на качество
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
+                  <Icon name="Phone" size={20} className="mr-2" />
+                  Вызвать мастера
+                </Button>
+                <Button variant="outline" size="lg" asChild className="border-2 border-white text-white hover:bg-white hover:text-[#1a5952] text-lg px-8 py-6">
+                  <a href="tel:+79109696588">
+                    <Icon name="Phone" size={20} className="mr-2" />
+                    8 910 969 65 88
+                  </a>
+                </Button>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <div className="bg-[#1a5952] p-8 rounded-lg text-white space-y-6">
+                <h3 className="text-2xl font-bold uppercase">Промывка</h3>
+                <h3 className="text-2xl font-bold uppercase">Сервисное обслуживание</h3>
+                <h3 className="text-2xl font-bold uppercase">Запчасти на котлы</h3>
+                <h3 className="text-2xl font-bold uppercase">Установка</h3>
+                <h3 className="text-2xl font-bold uppercase text-primary">Ремонт</h3>
+              </div>
             </div>
           </div>
         </div>
@@ -248,7 +274,7 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="bg-slate-900 text-white py-8">
+      <footer className="bg-[#1a5952] text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
@@ -256,7 +282,7 @@ const Index = () => {
             </div>
             <span className="font-bold text-lg">ООО ГазСервис</span>
           </div>
-          <p className="text-sm text-slate-400">© 2024 ООО ГазСервис. Все права защищены.</p>
+          <p className="text-sm text-white/70">© 2024 ООО ГазСервис. Все права защищены.</p>
         </div>
       </footer>
 
