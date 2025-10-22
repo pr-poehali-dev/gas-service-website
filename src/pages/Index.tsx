@@ -116,10 +116,7 @@ const Index = () => {
                 Заменим опыт на качество
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
-                  <Icon name="Phone" size={20} className="mr-2" />
-                  Вызвать мастера
-                </Button>
+                <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">Оставить заявку</Button>
                 <Button variant="outline" size="lg" asChild className="border-2 border-white text-white hover:bg-white hover:text-[#1a5952] text-lg px-8 py-6">
                   <a href="tel:+79109696588">
                     <Icon name="Phone" size={20} className="mr-2" />
