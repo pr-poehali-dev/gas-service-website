@@ -112,9 +112,7 @@ const Index = () => {
               <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
                 Профессиональный ремонт газовых котлов
               </h2>
-              <p className="text-2xl text-white/90 mb-8 font-medium">
-                Заменим опыт на качество
-              </p>
+              <p className="text-2xl text-white/90 mb-8 font-medium">Вернем тепло и уют  в Ваш дом</p>
               <div className="flex flex-wrap gap-4">
                 <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">Оставить заявку</Button>
                 <Button variant="outline" size="lg" asChild className="border-2 border-white text-white hover:bg-white hover:text-[#1a5952] text-lg px-8 py-6">
