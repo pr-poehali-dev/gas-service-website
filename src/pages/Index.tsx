@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
@@ -14,12 +15,38 @@ const Index = () => {
   const [selectedMaster, setSelectedMaster] = useState<string | null>(null);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Заявка отправлена",
-      description: "Мы свяжемся с вами в ближайшее время",
-    });
+    const formData = new FormData(e.target as HTMLFormElement);
+    const name = formData.get('name');
+    const phone = formData.get('phone');
+    const master = formData.get('master');
+    const comment = formData.get('comment');
+    
+    const message = `🔥 Новая заявка с сайта ГазСервис\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n👨‍🔧 Мастер: ${master}\n💬 Комментарий: ${comment}`;
+    
+    try {
+      await fetch(`https://api.telegram.org/bot7838323823:AAFdL-azJPqTQhKYP4zvO_xQhvl78DkrUVg/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: '@rostok_lepistok',
+          text: message
+        })
+      });
+      
+      toast({
+        title: "Заявка отправлена",
+        description: "Мы свяжемся с вами в ближайшее время",
+      });
+    } catch (error) {
+      toast({
+        title: "Ошибка",
+        description: "Попробуйте позвонить нам напрямую",
+        variant: "destructive"
+      });
+    }
+    
     setIsCallMasterOpen(false);
   };
 
@@ -28,21 +55,21 @@ const Index = () => {
       name: 'Ростокин Алексей Алексеевич',
       role: 'Директор, ведущий специалист',
       description: 'Допуск ко всем газовым котлам и оборудованию, пуско-наладочные работы',
-      phone: '8 910 969 65 88',
+      phone: '+7 910 822 09 29',
       certificates: 'Сертификаты BAXI, Protherm, Valtec'
     },
     {
       name: 'Шаров Кирилл Алексеевич',
       role: 'Мастер по обслуживанию',
       description: 'Допуск ко всем видам газовых котлов и колонок',
-      phone: '8 910 969 65 88',
+      phone: '+7 910 822 09 29',
       certificates: 'Сертифицированный специалист'
     },
     {
       name: 'Кирсанов Евгений Русланович',
       role: 'Монтажник',
       description: 'Монтажные работы: полипропилен, нержавейка, медь',
-      phone: '8 910 969 65 88',
+      phone: '+7 910 822 09 29',
       certificates: 'Специалист по монтажу'
     }
   ];
@@ -70,6 +97,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <div className="bg-[#1a5952] text-white py-2">
+        <div className="container mx-auto px-4 flex items-center justify-center gap-4">
+          <Icon name="Phone" size={20} />
+          <a href="tel:+79108220929" className="font-medium text-lg hover:text-primary transition-colors">
+            +7 910 822 09 29
+          </a>
+        </div>
+      </div>
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -83,7 +118,7 @@ const Index = () => {
               </div>
             </div>
             <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90">
-              <Icon name="Phone" size={18} className="mr-2" />
+              <Icon name="Phone" size={24} className="mr-2" />
               Вызвать мастера
             </Button>
           </div>
@@ -116,9 +151,9 @@ const Index = () => {
               <div className="flex flex-wrap gap-4">
                 <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">Оставить заявку</Button>
                 <Button variant="outline" size="lg" asChild className="border-2 border-white text-white hover:bg-white hover:text-[#1a5952] text-lg px-8 py-6">
-                  <a href="tel:+79109696588" className="flex items-center">
+                  <a href="tel:+79108220929" className="flex items-center">
                     <Icon name="Phone" size={20} className="mr-2" />
-                    8 910 969 65 88
+                    +7 910 822 09 29
                   </a>
                 </Button>
               </div>
@@ -243,8 +278,8 @@ const Index = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Icon name="Phone" size={20} className="text-primary" />
-                    <a href="tel:+79109696588" className="font-medium hover:text-primary transition-colors">
-                      8 910 969 65 88
+                    <a href="tel:+79108220929" className="font-medium hover:text-primary transition-colors">
+                      +7 910 822 09 29
                     </a>
                   </div>
                 </div>
@@ -292,15 +327,30 @@ const Index = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <Label htmlFor="name">Имя</Label>
-              <Input id="name" placeholder="Введите ваше имя" required />
+              <Input id="name" name="name" placeholder="Введите ваше имя" required />
             </div>
             <div>
               <Label htmlFor="phone">Номер телефона</Label>
-              <Input id="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+              <Input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+            </div>
+            <div>
+              <Label htmlFor="master">Выберите мастера</Label>
+              <Select name="master" required>
+                <SelectTrigger>
+                  <SelectValue placeholder="Выберите мастера" />
+                </SelectTrigger>
+                <SelectContent>
+                  {masters.map((master, idx) => (
+                    <SelectItem key={idx} value={master.name}>
+                      {master.name} - {master.phone}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             <div>
               <Label htmlFor="comment">Комментарий</Label>
-              <Textarea id="comment" placeholder="Опишите вашу проблему..." rows={4} />
+              <Textarea id="comment" name="comment" placeholder="Опишите вашу проблему..." rows={4} />
             </div>
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
               Отправить заявку
