@@ -191,7 +191,7 @@ const Index = () => {
 
       <section id="masters" className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Выберите мастера</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Наши мастера :</h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {masters.map((master, idx) => (
               <Card key={idx} className="hover:shadow-lg transition-shadow">
