@@ -113,8 +113,8 @@ const Index = () => {
                 <Icon name="Flame" className="text-white" size={24} />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">ООО ГазСервис</h1>
-                <p className="text-sm text-muted-foreground">Ремонт и обслуживание газовых котлов</p>
+                <h2 className="text-xl font-bold text-foreground">ООО ГазСервис</h2>
+                <p className="text-sm text-muted-foreground">Ремонт котлов Ярославль</p>
               </div>
             </div>
             <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90">
@@ -138,16 +138,12 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                  <Icon name="Flame" className="text-white" size={32} />
-                </div>
-                <h1 className="text-3xl font-bold text-white">РЕМОНТ И ОБСЛУЖИВАНИЕ КОТЛОВ</h1>
-              </div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
-                Профессиональный ремонт газовых котлов
-              </h2>
-              <p className="text-2xl text-white/90 mb-8 font-medium">Вернем тепло и уют  в Ваш дом</p>
+  
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
+                Ремонт котлов Ярославль
+              </h1>
+              <h2 className="text-2xl text-white/90 mb-4 font-medium">Профессиональный ремонт и обслуживание газовых котлов</h2>
+              <p className="text-xl text-white/90 mb-8">Вернем тепло и уют в Ваш дом. Выезд мастера 24/7</p>
               <div className="flex flex-wrap gap-4">
                 <Button onClick={() => setIsCallMasterOpen(true)} size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">Оставить заявку</Button>
                 <Button variant="outline" size="lg" asChild className="border-2 border-white text-white hover:bg-white hover:text-[#1a5952] text-lg px-8 py-6">
